@@ -11,6 +11,7 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
 	php-intl \
 	php-fpm \
 	php-mysql \
+	openssl
 
 COPY srcs/ ./root/
 
