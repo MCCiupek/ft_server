@@ -11,10 +11,8 @@ ln -s /usr/share/phpMyAdmin ${path}/phpMyAdmin
 
 ### Modify admin rights
 echo -e "Changing admin rights..."
-chown -R www-data:www-data * #${path}/*
+chown -R www-data:www-data ${path}/*
 chmod -R 755 ${path}/wordpress
-# mkdir ${path}/phpMyAdmin/tmp && chmod 777 ${path}/phpMyAdmin/tmp
-# chmod 777 ${path}/wordpress/wp-content
 
 ### Generate SSL certificates 
 echo -e "Generating SSL certificate..."
