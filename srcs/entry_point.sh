@@ -7,19 +7,22 @@ echo -e "Copying config files..."
 mkdir ${path}
 cp -r wordpress ${path}/wordpress
 cp -r phpmyadmin ${path}/phpMyAdmin
+ln -s /usr/share/phpMyAdmin ${path}/phpMyAdmin
 
 ### Modify admin rights
 echo -e "Changing admin rights..."
-chown -R www-data:www-data *
-chmod -R 775 /var/www/*
+chown -R www-data:www-data * #${path}/*
+chmod -R 755 ${path}/wordpress
 # mkdir ${path}/phpMyAdmin/tmp && chmod 777 ${path}/phpMyAdmin/tmp
-chmod 777 ${path}/wordpress/wp-content
+# chmod 777 ${path}/wordpress/wp-content
 
 ### Generate SSL certificates 
 echo -e "Generating SSL certificate..."
 mkdir /etc/nginx/ssl
-openssl req -out /etc/nginx/ssl/localhost.csr -new -newkey rsa:2048 -keyout /etc/nginx/ssl/localhost.key -subj "/C=FR/ST=France/L=Paris/O=42/OU=42/CN=localhost.com"
-openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/localhost.key -out /etc/nginx/ssl/localhost.crt -subj "/C=FR/ST=France/L=Paris/O=42/OU=42/CN=localhost.com"
+openssl req -nodes -new -x509 \
+	-keyout /etc/nginx/ssl/localhost.key \
+	-out /etc/nginx/ssl/localhost.crt \
+	-subj "/C=FR/ST=France/L=Paris/O=42/OU=42/CN=localhost.com"
 
 ### Activate virtual host
 echo -e "Activating virtual host..."
@@ -40,5 +43,6 @@ service php7.3-fpm start
 
 echo -e "Success!"
 
+# Pause Docker
 #tail -f /dev/null
 sh
