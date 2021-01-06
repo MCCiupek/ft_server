@@ -21,7 +21,7 @@ To run a command inside a background running container :
 	docker exec CONTAINER_ID CMD
 
 To open a term :
-	docker exec CONTAINER_ID bash
+	docker exec -it CONTAINER_ID bash
 
 See all runing containers :
 	docker ps
