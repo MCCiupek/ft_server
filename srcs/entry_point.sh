@@ -24,23 +24,22 @@ openssl req -nodes -new -x509 \
 
 ### Activate virtual host
 echo -e "Activating virtual host..."
-cp localhost.conf /etc/nginx/sites-available/localhost
+sh autoindex.sh ${auto_index}
 ln -s /etc/nginx/sites-available/localhost /etc/nginx/sites-enabled/
 
 # Create database
 echo -e "Creating database..."
-# mysql -u root < create_tables.sql
 service mysql start
 mysql -u root < db.sql
 
 # Restart
 echo -e "Restarting services..."
-nginx -t
 service nginx restart
 service php7.3-fpm start
 
 echo -e "Success!"
 
 # Pause Docker
-#tail -f /dev/null
 sh
+#tail -f /var/log/nginx/access.log
+#tail -f /var/log/nginx/error.log

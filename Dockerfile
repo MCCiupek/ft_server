@@ -21,3 +21,5 @@ WORKDIR /root/
 EXPOSE 80 443
 
 ENTRYPOINT ["bash", "entry_point.sh"]
+
+#CMD bash entry_point.sh && bash
