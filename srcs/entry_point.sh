@@ -40,6 +40,5 @@ service php7.3-fpm start
 echo -e "Success!"
 
 # Pause Docker
-sh
+bash
 tail -f /var/log/nginx/access.log
-#tail -f /var/log/nginx/error.log
