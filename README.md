@@ -2,6 +2,9 @@
 
 Ce sujet a pour but de vous initier aux bases de l’administration système et réseau en vous sensibilisant a l’importance de l’utilisation de scripts pour automatiser vos taches. Il vous permettra de procéder à l'installation d'un serveur web complet, qui sera capable de faire tourner plusieurs services (Wordpress, Phpmyadmin, ainsi qu’une base de donnée) a l'aide d'une technologie de déploiement nommée Docker.
 
+![image](https://user-images.githubusercontent.com/51337012/139270324-9cfc8e24-bd03-4561-bdd1-228d6f2f8d87.png)
+
+
 ## Description
 
 * Vous devrez, dans un seul container Docker, mettre en place un serveur web avec Nginx. Le container devra tourner avec Debian Buster.
